@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-labelledby="t d">
+<title id="t">Pesquisa Enquete Emocionais</title><desc id="d">Arte institucional azul da Pesquisa Enquete Emocionais, 40 perguntas e 10 áreas.</desc>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071f46"/><stop offset=".55" stop-color="#0b4f78"/><stop offset="1" stop-color="#08a49a"/></linearGradient>
+<radialGradient id="r"><stop stop-color="#9cf2e6" stop-opacity=".32"/><stop offset="1" stop-color="#9cf2e6" stop-opacity="0"/></radialGradient></defs>
+<rect width="1200" height="750" fill="url(#g)"/><circle cx="930" cy="330" r="380" fill="url(#r)"/>
+<path d="M0 614C188 543 358 674 548 605c183-66 317-168 652 25v120H0z" fill="#061c3f" opacity=".42"/>
+<g transform="translate(76 70)"><rect width="286" height="44" rx="22" fill="#fff" opacity=".12"/><circle cx="24" cy="22" r="10" fill="#79e3d3"/><text x="47" y="28" fill="#e8fffb" font-family="Arial" font-size="18" font-weight="700" letter-spacing="2">PESQUISA IMPULSO</text></g>
+<g transform="translate(76 190)"><text fill="#fff" font-family="Georgia,serif" font-size="66" font-weight="700"><tspan x="0" dy="0">Pesquisa</tspan><tspan x="0" dy="74">Enquete Emocionais</tspan></text>
+<text x="2" y="190" fill="#d3eef3" font-family="Arial" font-size="24">40 perguntas em ordem misturada</text><text x="2" y="226" fill="#d3eef3" font-family="Arial" font-size="24">para uma autoanálise mais espontânea.</text>
+<g transform="translate(0 276)"><rect width="205" height="56" rx="14" fill="#fff" opacity=".12"/><text x="102" y="36" text-anchor="middle" fill="#fff" font-family="Arial" font-size="20" font-weight="700">40 PERGUNTAS</text></g>
+<g transform="translate(222 276)"><rect width="176" height="56" rx="14" fill="#72ddcf"/><text x="88" y="36" text-anchor="middle" fill="#063c59" font-family="Arial" font-size="20" font-weight="800">10 ÁREAS</text></g></g>
+<g transform="translate(748 175)">
+<circle cx="175" cy="175" r="150" fill="#f5fffd" opacity=".96"/><circle cx="175" cy="175" r="112" fill="none" stroke="#6fe0d1" stroke-width="6"/>
+<path d="M175 82v46M175 222v46M82 175h46M222 175h46M110 110l32 32M208 208l32 32M240 110l-32 32M142 208l-32 32" stroke="#0c6d83" stroke-width="12" stroke-linecap="round"/>
+<circle cx="175" cy="175" r="42" fill="#0b5574"/><circle cx="175" cy="175" r="18" fill="#79e3d3"/></g>
+<g transform="translate(720 585)"><rect width="390" height="72" rx="20" fill="#071f46" opacity=".72"/><circle cx="42" cy="36" r="20" fill="#6fe0d1"/><path d="M32 36l8 8 14-18" fill="none" stroke="#073a57" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="78" y="30" fill="#fff" font-family="Arial" font-size="18" font-weight="800">RESULTADO VISUAL</text><text x="78" y="53" fill="#c7ebe7" font-family="Arial" font-size="14">Responsiva para smartphones</text></g>
+<text x="76" y="704" fill="#fff" font-family="Arial" font-size="20" font-weight="800" letter-spacing="1">IMPULSO</text><text x="171" y="704" fill="#82ddd2" font-family="Arial" font-size="20">COACHING</text>
+</svg>
