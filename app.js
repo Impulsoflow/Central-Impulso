@@ -1,6 +1,9 @@
 (() => {
   "use strict";
+  const clientPortal = 'https://impulso-portal-staging.impulsoflow-f91.workers.dev/minha-conta';
+  const rodaLink = clientPortal + '/roda-da-vida';
   const items = [
+    {id:'roda-vida',image:'./media/roda-vida.svg',name:'Roda da Vida',category:'Desenvolvimento',title:'Autoconhecimento',desc:'Uma avaliação de entrada com 12 dimensões da vida, gráfico e relatório personalizado em PDF.',icon:'✦',tone:'green',url:rodaLink},
     {id:"disc",image:"./media/disc.png",name:"Perfil Comportamental DISC",category:"Comportamento",title:"Comportamento",desc:"Conheça os quatro perfis comportamentais e compreenda melhor sua comunicação e suas relações.",icon:"◈",tone:"blue",url:"https://impulsoflow.github.io/DISC/"},
     {id:"empatia",image:"./media/empatia.webp",name:"Impulso Empatia 360",category:"Emocional",title:"Inteligência emocional",desc:"36 questões para explorar escuta, empatia, compreensão emocional e inteligência relacional.",icon:"♡",tone:"pink",url:"https://impulsoflow.github.io/Empatia-Impulso/empatia-360.html"},
     {id:"tempo",image:"./media/tempo.png",name:"Gestão do Tempo",category:"Desenvolvimento",title:"Produtividade",desc:"Descubra como você organiza prioridades e administra atividades importantes, urgentes e circunstanciais.",icon:"◷",tone:"cyan",url:"https://impulsoflow.github.io/GestaoRoger/"},
@@ -10,7 +13,7 @@
     {id:"iga",image:"./media/iga.png",name:"Índice de Autoestima — IGA",category:"Emocional",title:"Autoestima",desc:"Reflita sobre autorrespeito, autoconfiança e a forma como você percebe seu próprio valor.",icon:"✿",tone:"green",url:"https://impulsoflow.github.io/IGA-Indice-AutoEstima/"}
   ];
   const policyEndpoint = "https://impulso-portal-staging.impulsoflow-f91.workers.dev/api/public/pesquisas";
-  const policyIds = {disc:"disc",empatia:"empatia-360",tempo:"gestao-tempo",forcas:"forcas-carater",bloqueios:"bloqueios-emocionais",enquete:"enquete-emocionais",iga:"iga-autoestima"};
+  const policyIds = {"roda-vida":"roda-vida",disc:"disc",empatia:"empatia-360",tempo:"gestao-tempo",forcas:"forcas-carater",bloqueios:"bloqueios-emocionais",enquete:"enquete-emocionais",iga:"iga-autoestima"};
   let policies = new Map(); // Sem confirmação, todas ficam bloqueadas.
   const policyFor = item => policies.get(policyIds[item.id]) || {mode:"BLOCKED",priceCents:null};
   async function refreshPolicies(){
@@ -30,11 +33,11 @@
   const modal = $("#modal");
   const descriptions = {
     account: {
-      symbol: "♙",kicker:"MINHA CONTA • EM IMPLANTAÇÃO",
+      symbol: "♙",kicker:"MINHA CONTA IMPULSO",
       title:"Uma conta para toda a sua jornada.",
-      text:"Estamos integrando login único, histórico pessoal e relatórios de todas as avaliações. O portal definitivo exigirá uma senha própria e protegerá os resultados de cada participante.",
+      text:"Acesse sua conta com e-mail confirmado para realizar a Roda da Vida e consultar relatórios disponíveis.",
       details:"<strong>O que você já consegue fazer:</strong><ul><li>Realizar uma pesquisa pelo link oficial e conferir as condições.</li><li>Retornar ao DISC com e-mail e PIN já cadastrados.</li><li>Receber relatórios conforme a entrega de cada avaliação.</li></ul><strong>O que está em preparação:</strong> uma única senha, histórico reunido, downloads anteriores, convites 360° e status individual de autorização.",
-      actions:[{label:"Acessar meu DISC",href:"https://impulsoflow.github.io/DISC/"},{label:"Ver as pesquisas",action:"close"}],
+      actions:[{label:"Entrar na minha conta",href:clientPortal},{label:"Ver as pesquisas",action:"close"}],
       note:"Seu histórico não é público. Não informe sua senha ou PIN em mensagens ou formulários fora da pesquisa oficial."
     }
   };
@@ -63,17 +66,22 @@
   }
   function card(item){
     const article=document.createElement("article");
-    article.className="research-card";
+    article.className="research-card"+(item.id==="roda-vida"?" featured-research-card":"");
     article.dataset.research=item.id;
+    const free=item.id==="roda-vida" && policyFor(item).mode==="FREE";
     article.innerHTML='<div class="card-image"><img src="'+item.image+'" alt="Imagem ilustrativa da '+item.name+'" loading="lazy"/></div>'+
       '<div class="card-category">'+item.title+'</div>'+
       '<h3>'+item.name+'</h3><p>'+item.desc+'</p>'+
-      '<div class="card-bottom"><button type="button" class="card-link" data-action="open">Solicitar acesso <span aria-hidden="true">→</span></button></div>';
-    article.querySelector('[data-action="open"]').addEventListener("click",()=>showConditions(item));
+      (free?'<div class="public-free-label">Gratuita com cadastro</div>':'')+
+      '<div class="card-bottom"><button type="button" class="card-link" data-action="open">'+(free?'Começar avaliação gratuita':item.id==='roda-vida'?'Consultar disponibilidade':'Solicitar acesso')+' <span aria-hidden="true">→</span></button></div>';
+    article.querySelector('[data-action="open"]').addEventListener("click",()=>{if(free)window.location.assign(rodaLink);else showConditions(item);});
     return article;
   }
   function showConditions(item){
     const contact="mailto:impulsoflow@gmail.com?subject="+encodeURIComponent("Impulso | Solicitar participação: "+item.name);
+    if(item.id==='roda-vida'){
+      show({symbol:'◷',kicker:'DISPONIBILIDADE',title:'Roda da Vida',text:'Estamos consultando a disponibilidade desta avaliação. Tente novamente daqui a pouco.',details:'',actions:[{label:'Entrar na minha conta',href:clientPortal},{label:'Voltar',action:'close'}],note:'Acesso mediante conta Impulso verificada.'});return;
+    }
     show({
       symbol:"✦",kicker:"SUA PRÓXIMA DESCOBERTA",title:item.name,
       text:"Interessou-se por esta avaliação? Nossa equipe ajudará você a dar o próximo passo.",
