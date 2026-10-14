@@ -15,4 +15,5 @@ test('outras avaliações continuam com ação comercial individual',()=>{
  assert.match(js,/Solicitar acesso/);
  assert.doesNotMatch(js,/window\.open\(item\.url/);
  assert.match(js,/policyEndpoint/);
+ assert.match(js,/categoria=ACESSO_PESQUISA/);
 });

@@ -78,7 +78,7 @@
     return article;
   }
   function showConditions(item){
-    const contact="mailto:impulsoflow@gmail.com?subject="+encodeURIComponent("Impulso | Solicitar participação: "+item.name);
+    const contact=clientPortal+"/ajuda?categoria=ACESSO_PESQUISA&pesquisa="+encodeURIComponent(policyIds[item.id]||item.id);
     if(item.id==='roda-vida'){
       show({symbol:'◷',kicker:'DISPONIBILIDADE',title:'Roda da Vida',text:'Estamos consultando a disponibilidade desta avaliação. Tente novamente daqui a pouco.',details:'',actions:[{label:'Entrar na minha conta',href:clientPortal},{label:'Voltar',action:'close'}],note:'Acesso mediante conta Impulso verificada.'});return;
     }
@@ -86,7 +86,7 @@
       symbol:"✦",kicker:"SUA PRÓXIMA DESCOBERTA",title:item.name,
       text:"Interessou-se por esta avaliação? Nossa equipe ajudará você a dar o próximo passo.",
       details:"<strong>Sobre a avaliação</strong><p style='margin:8px 0 0'>"+item.desc+"</p>",
-      actions:[{label:"Solicitar participação ↗",href:contact},{label:"Voltar às pesquisas",action:"close"}],
+      actions:[{label:"Solicitar acesso na Central de Ajuda ↗",href:contact},{label:"Voltar às pesquisas",action:"close"}],
       note:"Uma avaliação só poderá ser iniciada após autenticação e autorização de acesso."
     });
   }
