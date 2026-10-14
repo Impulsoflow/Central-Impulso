@@ -36,7 +36,7 @@
       symbol: "♙",kicker:"MINHA CONTA IMPULSO",
       title:"Uma conta para toda a sua jornada.",
       text:"Acesse sua conta com e-mail confirmado para realizar a Roda da Vida e consultar relatórios disponíveis.",
-      details:"<strong>O que você já consegue fazer:</strong><ul><li>Realizar uma pesquisa pelo link oficial e conferir as condições.</li><li>Retornar ao DISC com e-mail e PIN já cadastrados.</li><li>Receber relatórios conforme a entrega de cada avaliação.</li></ul><strong>O que está em preparação:</strong> uma única senha, histórico reunido, downloads anteriores, convites 360° e status individual de autorização.",
+      details:"<strong>Na sua área pessoal:</strong><ul><li>Entrar ou ativar sua conta protegida.</li><li>Fazer gratuitamente a Roda da Vida quando liberada.</li><li>Visualizar e baixar relatórios disponíveis.</li><li>Acompanhar avaliações e solicitar outras pesquisas.</li></ul>",
       actions:[{label:"Entrar na minha conta",href:clientPortal},{label:"Ver as pesquisas",action:"close"}],
       note:"Seu histórico não é público. Não informe sua senha ou PIN em mensagens ou formulários fora da pesquisa oficial."
     }
