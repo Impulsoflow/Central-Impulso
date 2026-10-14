@@ -6,3 +6,10 @@
 .card-commercial{display:inline-flex;align-items:center;align-self:flex-start;border-radius:10px;padding:9px 13px;margin:4px 18px 12px;font-size:13px;font-weight:850;line-height:1.3}
 .card-commercial.locked{background:#edf3fa;color:#164a7d;border:1px solid #d8e3f1}
 .card-commercial.available{background:#e8f7ee;color:#146f44;border:1px solid #c4e8d1}
+/* Catálogo orientado à jornada: imagens completas e uma única ação por pesquisa. */
+.card-image{height:auto!important;aspect-ratio:16/9!important;overflow:hidden;background:linear-gradient(140deg,#0b315f,#104d8c)}
+.card-image img{width:100%;height:100%;object-fit:contain!important;object-position:center center!important}
+.research-card .card-bottom{margin-top:auto}
+.card-bottom .card-link{width:100%;min-height:46px;font-size:12px;border-radius:11px}
+.steps{grid-template-columns:repeat(2,minmax(0,1fr));max-width:840px;margin:0 auto}
+@media(max-width:600px){.steps{grid-template-columns:1fr}.card-image{aspect-ratio:16/9!important}}
