@@ -11,8 +11,10 @@ Desde 17/10/2026, toda pesquisa ativa deverá exibir um selo discreto com a **ve
 6. Aplicar esta regra a cada uma das próximas pesquisas, quando forem revisadas. Não alterar as respostas de clientes nem a metodologia ao incluir o número de versão.
 
 ## Versões-base publicadas
-- Gestão do Tempo: `https://impulsoflow.github.io/GestaoDoTempo/` — Formulário **v1.0.0**
+- Gestão no Tempo: `https://impulsoflow.github.io/GestaoDoTempo/` — Formulário **v1.0.0**
 - DISC autoavaliação: `https://impulsoflow.github.io/DISC/` — Formulário **v1.0.0**
 - DISC convidados 360°: `https://impulsoflow.github.io/ConvidadoDisc/` — Formulário **v1.0.0**
 
 Repositório histórico `GestaoRoger`: manter somente como redirecionamento para o endereço oficial, depois arquivar sem exclusão dos arquivos.
+
+**Nome oficial da pesquisa:** Gestão no Tempo. O caminho histórico `GestaoDoTempo` pode permanecer como alias técnico enquanto os links anteriores forem preservados.
