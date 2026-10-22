@@ -12,6 +12,22 @@
     {id:"enquete",image:"./media/enquete.svg",name:"Enquete Emocionais",category:"Emocional",title:"Autoanálise emocional",desc:"Quarenta perguntas para observar hábitos emocionais e padrões de resposta em diversas situações.",icon:"✺",tone:"cyan",url:"https://impulsoflow.github.io/Bloqueios40/enquete-emocionais/"},
     {id:"iga",image:"./media/iga.png",name:"Índice de Autoestima — IGA",category:"Emocional",title:"Autoestima",desc:"Reflita sobre autorrespeito, autoconfiança e a forma como você percebe seu próprio valor.",icon:"✿",tone:"green",url:"https://impulsoflow.github.io/IGA-Indice-AutoEstima/"}
   ];
+  // Assessment Core: metadados versionados e compartilhados com o produto azul.
+  // O catálogo legado abaixo é fallback caso o script de biblioteca não carregue.
+  // Nenhum preço, liberação, URL ou direito de acesso é alterado aqui.
+  const sharedCore = window.IMPULSO_ASSESSMENT_CORE;
+  if(sharedCore?.release === "0.1.0" && sharedCore.scope === "metadata-only"
+      && Array.isArray(sharedCore.assessments) && sharedCore.assessments.length === items.length) {
+    const sharedByLegacyId = new Map(sharedCore.assessments.map(entry => [entry.legacyId, entry]));
+    if(items.every(item => sharedByLegacyId.has(item.id))) {
+      for(const item of items) {
+        const entry = sharedByLegacyId.get(item.id);
+        item.name = entry.title;
+        item.category = entry.category;
+        item.desc = entry.description;
+      }
+    }
+  }
   const policyEndpoint = "https://impulso-portal-staging.impulsoflow-f91.workers.dev/api/public/pesquisas";
   const policyIds = {"roda-vida":"roda-vida",disc:"disc",empatia:"empatia-360",tempo:"gestao-tempo",forcas:"forcas-carater",bloqueios:"bloqueios-emocionais",enquete:"enquete-emocionais",iga:"iga-autoestima"};
   let policies = new Map(); // Sem confirmação, todas ficam bloqueadas.
