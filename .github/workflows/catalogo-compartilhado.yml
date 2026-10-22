@@ -1,0 +1,21 @@
+name: Central de Pesquisas — regressão e biblioteca compartilhada
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  catalogo:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validar sintaxe do catálogo
+        run: node --check app.js
+      - name: Executar testes, incluindo o Assessment Core
+        run: node --test tests/*.test.mjs
