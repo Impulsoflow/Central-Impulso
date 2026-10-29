@@ -67,15 +67,16 @@
   }
   function card(item){
     const article=document.createElement("article");
-    article.className="research-card"+(item.id==="roda-vida"?" featured-research-card":"");
+    article.className="research-card"+(item.id==="roda-vida"?" featured-research-card":"")+(item.id==="missao"?" mission-highlight":"");
     article.dataset.research=item.id;
     const free=item.id==="roda-vida" && policyFor(item).mode==="FREE";
+    const missionDemo=item.id==="missao";
     article.innerHTML='<div class="card-image"><img src="'+item.image+'" alt="Imagem ilustrativa da '+item.name+'" loading="lazy"/></div>'+
       '<div class="card-category">'+item.title+'</div>'+
       '<h3>'+item.name+'</h3><p>'+item.desc+'</p>'+
-      (free?'<div class="public-free-label">Gratuita com cadastro</div>':'')+
-      '<div class="card-bottom"><button type="button" class="card-link" data-action="open">'+(free?'Começar avaliação gratuita':item.id==='roda-vida'?'Consultar disponibilidade':'Solicitar acesso')+' <span aria-hidden="true">→</span></button></div>';
-    article.querySelector('[data-action="open"]').addEventListener("click",()=>{if(free)window.location.assign(rodaLink);else showConditions(item);});
+      (free?'<div class="public-free-label">Gratuita com cadastro</div>':missionDemo?'<div class="mission-demo-label">MISSÃO EM DESTAQUE · DEMONSTRAÇÃO PÚBLICA</div>':'')+
+      '<div class="card-bottom"><button type="button" class="card-link" data-action="open">'+(free?'Começar avaliação gratuita':missionDemo?'Experimentar MISSÃO agora':item.id==='roda-vida'?'Consultar disponibilidade':'Consultar acesso e planos')+' <span aria-hidden="true">→</span></button></div>';
+    article.querySelector('[data-action="open"]').addEventListener("click",()=>{if(free)window.location.assign(rodaLink);else if(missionDemo)window.open(item.url,"_blank","noopener,noreferrer");else showConditions(item);});
     return article;
   }
   function showConditions(item){
@@ -97,6 +98,7 @@
       (category==="Todas"||item.category===category) &&
       (!normalized || (item.name+" "+item.desc+" "+item.title).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().includes(normalized))
     );
+    visible.sort((a,b)=>Number(b.id==="missao")-Number(a.id==="missao"));
     grid.replaceChildren(...visible.map(card));
     $("#empty").hidden=visible.length!==0;
     document.querySelectorAll(".filter").forEach(button=>{
